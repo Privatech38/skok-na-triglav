@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://c11o78wyp8wmb"]
 
-[ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://Gozd.png" id="1_dojse"]
-[ext_resource type="Texture2D" uid="uid://v7dln0b4mbps" path="res://player.tres" id="2_7b7ce"]
-[ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://player.gd" id="2_prver"]
-[ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://Player.png" id="4_prver"]
+[ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_dojse"]
+[ext_resource type="Texture2D" uid="uid://v7dln0b4mbps" path="res://assets/player.tres" id="2_7b7ce"]
+[ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_prver"]
+[ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://assets/Player.png" id="4_prver"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04qo3"]
 size = Vector2(16, 34)
@@ -114,7 +114,7 @@ limit_bottom = 56
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_l5ubp")
-animation = &"run"
+animation = &"jump_up"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 37)
