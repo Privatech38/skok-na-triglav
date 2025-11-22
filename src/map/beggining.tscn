@@ -1,35 +1,35 @@
 [gd_scene load_steps=15 format=3 uid="uid://c11o78wyp8wmb"]
 
-[ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_dojse"]
-[ext_resource type="Texture2D" uid="uid://v7dln0b4mbps" path="res://assets/player.tres" id="2_7b7ce"]
-[ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_prver"]
-[ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://assets/Player.png" id="4_prver"]
+[ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_6v467"]
+[ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_r7bhw"]
+[ext_resource type="Texture2D" uid="uid://v7dln0b4mbps" path="res://assets/player.tres" id="3_k7j6w"]
+[ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://assets/Player.png" id="4_jbwhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04qo3"]
 size = Vector2(16, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04qo3"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(74, 0, 21, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prver"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(0, 0, 16, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj4hy"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(35, 0, 18, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbfqx"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(54, 0, 19, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3l0eb"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(0, 0, 17, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpvxo"]
-atlas = ExtResource("4_prver")
+atlas = ExtResource("4_jbwhd")
 region = Rect2(17, 0, 17, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5ubp"]
@@ -90,16 +90,16 @@ size = Vector2(119, 47)
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -584)
-texture = ExtResource("1_dojse")
+texture = ExtResource("1_6v467")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("2_prver")
+script = ExtResource("2_r7bhw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 visible = false
 texture_filter = 1
 texture_repeat = 1
-texture = ExtResource("2_7b7ce")
+texture = ExtResource("3_k7j6w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_04qo3")
