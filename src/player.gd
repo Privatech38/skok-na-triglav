@@ -38,7 +38,12 @@ func _physics_process(delta: float) -> void:
 			var direction := Input.get_axis("move_left", "move_right")
 			velocity.x = direction * SPEED
 
-	move_and_slide()
+	var previous_velocity = Vector2(velocity)
+	if move_and_slide() && is_on_wall():
+		var collision_info = get_last_slide_collision()
+		velocity = previous_velocity.bounce(collision_info.get_normal())
+		velocity.x *= 0.8
+		print(velocity)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):

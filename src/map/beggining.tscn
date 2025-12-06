@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c11o78wyp8wmb"]
+[gd_scene load_steps=15 format=3 uid="uid://c11o78wyp8wmb"]
 
 [ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_6v467"]
 [ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_r7bhw"]
 [ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://assets/Player.png" id="4_jbwhd"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e05c3"]
+b = Vector2(0, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04qo3"]
 size = Vector2(16, 34)
@@ -90,6 +93,22 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -584)
 texture = ExtResource("1_6v467")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundAtlas"]
+position = Vector2(193, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D"]
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_e05c3")
+one_way_collision_margin = 0.0
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundAtlas"]
+position = Vector2(-193, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D2"]
+rotation = -3.1415927
+shape = SubResource("SegmentShape2D_e05c3")
+one_way_collision_margin = 0.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("2_r7bhw")
