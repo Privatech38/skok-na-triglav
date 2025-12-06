@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c11o78wyp8wmb"]
+[gd_scene load_steps=20 format=3 uid="uid://c11o78wyp8wmb"]
 
 [ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_6v467"]
 [ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_r7bhw"]
@@ -81,7 +81,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b7ce"]
-size = Vector2(384, 72)
+size = Vector2(384, 69.149155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e05c3"]
+size = Vector2(20.212751, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6v467"]
+size = Vector2(93, 40.515633)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7bhw"]
+size = Vector2(63, 55.248566)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7j6w"]
+size = Vector2(76, 112.33887)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbwhd"]
+size = Vector2(47, 58.93184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prver"]
 size = Vector2(119, 47)
@@ -91,7 +106,7 @@ size = Vector2(119, 47)
 [node name="BackgroundAtlas" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(0, -584)
+position = Vector2(0, -583)
 texture = ExtResource("1_6v467")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BackgroundAtlas"]
@@ -114,6 +129,7 @@ one_way_collision_margin = 0.0
 script = ExtResource("2_r7bhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_04qo3")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -124,21 +140,48 @@ limit_bottom = 56
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 texture_filter = 1
-position = Vector2(0, -1)
+position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_l5ubp")
-animation = &"jump_up"
+animation = &"idle"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node"]
 position = Vector2(0, 37)
 scale = Vector2(1, 0.543)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -1.8416207)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(0, -0.41622925)
 shape = SubResource("RectangleShape2D_7b7ce")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(154.00002, -354.51196)
+scale = Vector2(3.7600024, 1.8416207)
+shape = SubResource("RectangleShape2D_e05c3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(-1.5, -430.93927)
+shape = SubResource("RectangleShape2D_6v467")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node/StaticBody2D"]
+position = Vector2(-179, -528.5451)
+polygon = PackedVector2Array(38, -18.41626, 38, 47.88208, 92, 47.88208, 92, 82.872894, -13, 82.872894, -13, -18.41626)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(-64.5, -640.884)
+shape = SubResource("RectangleShape2D_r7bhw")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(154, -669.4291)
+shape = SubResource("RectangleShape2D_k7j6w")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node/StaticBody2D"]
+position = Vector2(-49, -837.93744)
+shape = SubResource("RectangleShape2D_jbwhd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node"]
 position = Vector2(-35, -66)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(30.5, 6.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
+position = Vector2(30.5, 7.5)
 shape = SubResource("RectangleShape2D_prver")

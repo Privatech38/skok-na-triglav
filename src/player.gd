@@ -43,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		var collision_info = get_last_slide_collision()
 		velocity = previous_velocity.bounce(collision_info.get_normal())
 		velocity.x *= 0.8
-		print(velocity)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
