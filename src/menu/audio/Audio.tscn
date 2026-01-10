@@ -28,7 +28,7 @@ text = "audio"
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Main" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="Main" type="Label" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_lvl85")
@@ -44,7 +44,7 @@ value = 100.0
 [node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="SFX" type="Button" parent="VBoxContainer/HSplitContainer"]
+[node name="SFX" type="Label" parent="VBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_lvl85")
