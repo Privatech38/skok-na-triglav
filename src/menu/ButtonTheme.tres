@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://conisc4qmvdop"]
+
+[ext_resource type="FontFile" uid="uid://dbemfej71p77a" path="res://assets/menu/Silkscreen-Bold.ttf" id="1_38t0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqlmn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm5dk"]
+bg_color = Color(0, 0, 0, 0.2509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38t0l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_38t0l")
+default_font_size = 46
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_bqlmn")
+Button/styles/hover = SubResource("StyleBoxFlat_wm5dk")
+Button/styles/normal = SubResource("StyleBoxFlat_38t0l")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw3x3cek3i22s"]
+
+[ext_resource type="FontFile" uid="uid://dbemfej71p77a" path="res://assets/menu/Silkscreen-Bold.ttf" id="1_6r6bq"]
+[ext_resource type="Script" uid="uid://cwvc4xbpbus3u" path="res://src/menu/options/options.gd" id="1_dya8p"]
+[ext_resource type="Theme" uid="uid://conisc4qmvdop" path="res://src/menu/ButtonTheme.tres" id="2_dya8p"]
+
+[node name="Options" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_dya8p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6r6bq")
+theme_override_font_sizes/font_size = 82
+text = "Options"
+
+[node name="Audio" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_dya8p")
+text = "audio"
+
+[node name="Controls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_dya8p")
+text = "controls"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_dya8p")
+text = "back"
+
+[connection signal="pressed" from="VBoxContainer/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

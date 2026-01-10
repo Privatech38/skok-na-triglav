@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Skok na Triglav"
-run/main_scene="uid://c11o78wyp8wmb"
+run/main_scene="uid://b4cwsx4djq8bp"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://assets/icon.svg"
 

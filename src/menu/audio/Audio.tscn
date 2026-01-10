@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://fliul3w15bfb"]
+
+[ext_resource type="Script" uid="uid://bw0ny80n1smfk" path="res://src/menu/audio/audio.gd" id="1_lvl85"]
+[ext_resource type="FontFile" uid="uid://dbemfej71p77a" path="res://assets/menu/Silkscreen-Bold.ttf" id="1_sujrt"]
+[ext_resource type="Theme" uid="uid://conisc4qmvdop" path="res://src/menu/ButtonTheme.tres" id="2_lvl85"]
+
+[node name="Audio" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_lvl85")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_sujrt")
+theme_override_font_sizes/font_size = 82
+text = "audio"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Main" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_lvl85")
+text = "main volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX" type="Button" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_lvl85")
+text = "sfx volume"
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_lvl85")
+text = "back"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
