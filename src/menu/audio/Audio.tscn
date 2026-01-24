@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://fliul3w15bfb"]
+[gd_scene load_steps=5 format=3 uid="uid://fliul3w15bfb"]
 
 [ext_resource type="Script" uid="uid://bw0ny80n1smfk" path="res://src/menu/audio/audio.gd" id="1_lvl85"]
 [ext_resource type="FontFile" uid="uid://dbemfej71p77a" path="res://assets/menu/Silkscreen-Bold.ttf" id="1_sujrt"]
 [ext_resource type="Theme" uid="uid://conisc4qmvdop" path="res://src/menu/ButtonTheme.tres" id="2_lvl85"]
+
+[sub_resource type="GDScript" id="GDScript_lvl85"]
+script/source = "extends Button
+
+@onready var main_script = $\".\"
+
+func _on_pressed() -> void:
+	pass # Replace with function body.
+"
 
 [node name="Audio" type="MarginContainer"]
 anchors_preset = 15
@@ -25,32 +34,32 @@ theme_override_fonts/font = ExtResource("1_sujrt")
 theme_override_font_sizes/font_size = 82
 text = "audio"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MainVolumeContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Main" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Main" type="Label" parent="VBoxContainer/MainVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_lvl85")
 text = "main volume"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+[node name="MainVolumeSlider" type="HSlider" parent="VBoxContainer/MainVolumeContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 value = 100.0
 
-[node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="SFX" type="Label" parent="VBoxContainer/HSplitContainer"]
+[node name="SFX" type="Label" parent="VBoxContainer/SFXVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_lvl85")
 text = "sfx volume"
 
-[node name="HSlider2" type="HSlider" parent="VBoxContainer/HSplitContainer"]
+[node name="SFXVolumeSlider" type="HSlider" parent="VBoxContainer/SFXVolumeContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -67,4 +76,16 @@ size_flags_horizontal = 0
 theme = ExtResource("2_lvl85")
 text = "back"
 
+[node name="ApplyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_lvl85")
+text = "APPLY"
+script = SubResource("GDScript_lvl85")
+
+[connection signal="drag_ended" from="VBoxContainer/MainVolumeContainer/MainVolumeSlider" to="." method="_on_main_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/SFXVolumeContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_drag_ended"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ApplyButton" to="VBoxContainer/HBoxContainer/ApplyButton" method="_on_pressed"]

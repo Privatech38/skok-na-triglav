@@ -11,6 +11,16 @@ var facing_right = true
 var time_held_start = 0
 var time_held = 0
 
+var landed = true
+
+@onready var jump_audio_player = $JumpAudioPlayer
+@onready var land_audio_player = $LandAudioPlayer
+@onready var walk_audio_player = $WalkAudioPlayer
+
+func _process(_delta: float) -> void:
+	if jump_audio_player.get_playback_position() >= 0.82:
+		jump_audio_player.stop()
+
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	
@@ -22,18 +32,28 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if velocity.x == 0:
 			sprite.play("idle")
+			walk_audio_player.stop()
 		else:
 			sprite.play("run")
+			if walk_audio_player.get_playback_position() == 0.0:
+				walk_audio_player.play(randf_range(0.0, 30.0))
+		if not landed:
+			land_audio_player.pitch_scale = randfn(1.0, 0.3)
+			land_audio_player.play(0.3)
+			landed = true
 	else:
 		if velocity.y < 0:
 			sprite.play("jump_up")
 		else:
 			sprite.play("fall")
+		landed = false
+		walk_audio_player.stop()
 
 	if is_on_floor():
 		if Input.is_action_just_released("jump"):
 			velocity.y = JUMP_VELOCITY_BASE + clamp(time_held, 0, 1000) / 1000.0 * JUMP_VELOCITY_ADD
 			velocity.x = SPEED if facing_right else -SPEED
+			jump_audio_player.play(0.67)
 		else:
 			var direction := Input.get_axis("move_left", "move_right")
 			velocity.x = direction * SPEED

@@ -1,10 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://c11o78wyp8wmb"]
+[gd_scene load_steps=32 format=3 uid="uid://c11o78wyp8wmb"]
 
 [ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_6v467"]
 [ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_r7bhw"]
 [ext_resource type="Texture2D" uid="uid://dglalrxiy80se" path="res://assets/MovingPlank.png" id="4_6v467"]
 [ext_resource type="Texture2D" uid="uid://c4glruiwnkhm3" path="res://assets/Player.png" id="4_jbwhd"]
+[ext_resource type="AudioStream" uid="uid://djvsokmm8p0y7" path="res://assets/audio/jump-landing-30946.mp3" id="5_7o88d"]
+[ext_resource type="AudioStream" uid="uid://bccfmww6fer4n" path="res://assets/audio/jumplanding-398256.mp3" id="5_aos2b"]
 [ext_resource type="Script" uid="uid://dnqalwlun5tvi" path="res://src/map/animation_player.gd" id="5_jbwhd"]
+[ext_resource type="AudioStream" uid="uid://bkg6qx3dujiy1" path="res://assets/audio/footsteps-dirt-gravel-6823.mp3" id="6_aos2b"]
+[ext_resource type="AudioStream" uid="uid://dd6faej2nbqeu" path="res://assets/audio/forest-ambience-296528.mp3" id="6_k7j6w"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_e05c3"]
 b = Vector2(0, 1000)
@@ -173,7 +177,6 @@ shape = SubResource("SegmentShape2D_e05c3")
 one_way_collision_margin = 0.0
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-168, -518)
 script = ExtResource("2_r7bhw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -191,6 +194,19 @@ texture_filter = 1
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_l5ubp")
 animation = &"idle"
+
+[node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_7o88d")
+volume_db = -13.722
+
+[node name="LandAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_aos2b")
+volume_db = -10.11
+
+[node name="WalkAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_aos2b")
+pitch_scale = 2.35
+parameters/looping = true
 
 [node name="Node" type="Node" parent="."]
 
@@ -259,6 +275,12 @@ shape = SubResource("RectangleShape2D_aos2b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/AnimatableBody2D/Area2D"]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_5gt5h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_k7j6w")
+volume_db = -20.944
+autoplay = true
+parameters/looping = true
 
 [connection signal="body_entered" from="Node/AnimatableBody2D/Area2D" to="Node/AnimatableBody2D" method="_player_enter"]
 [connection signal="body_entered" from="Node/AnimatableBody2D/Area2D" to="Node/AnimatableBody2D/AnimationPlayer" method="_player_enter"]
