@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c11o78wyp8wmb"]
+[gd_scene format=3 uid="uid://c11o78wyp8wmb"]
 
 [ext_resource type="Texture2D" uid="uid://bc1oa2u43xu2c" path="res://assets/Gozd.png" id="1_6v467"]
 [ext_resource type="Script" uid="uid://8wcqicexryuu" path="res://src/player.gd" id="2_r7bhw"]
@@ -107,6 +107,9 @@ size = Vector2(47, 58.93184)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o88d"]
 size = Vector2(51, 64.456665)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnprk"]
+size = Vector2(49, 58.931778)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prver"]
 size = Vector2(119, 47)
 
@@ -137,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-59, -554), Vector2(109, -554)]
+"values": [Vector2(-59, -554), Vector2(95, -554)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7o88d"]
@@ -152,135 +155,164 @@ size = Vector2(36, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gt5h"]
 size = Vector2(36, 1)
 
-[node name="Beggining" type="Node2D"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aos2b"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -400, 0)
+emission_shape_scale = Vector3(192, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 20, 0)
 
-[node name="BackgroundAtlas" type="Sprite2D" parent="."]
+[node name="Beggining" type="Node2D" unique_id=642921532]
+
+[node name="BackgroundAtlas" type="Sprite2D" parent="." unique_id=1905787]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -583)
 texture = ExtResource("1_6v467")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundAtlas"]
+[node name="StaticBody2D" type="StaticBody2D" parent="BackgroundAtlas" unique_id=1263872922]
 position = Vector2(193, 600)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D" unique_id=159707951]
 rotation = -3.1415927
 shape = SubResource("SegmentShape2D_e05c3")
 one_way_collision_margin = 0.0
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundAtlas"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="BackgroundAtlas" unique_id=229979512]
 position = Vector2(-193, 600)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackgroundAtlas/StaticBody2D2" unique_id=1532372879]
 rotation = -3.1415927
 shape = SubResource("SegmentShape2D_e05c3")
 one_way_collision_margin = 0.0
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1422377633]
+position = Vector2(-5, -227)
+floor_max_angle = 0.34906584
 script = ExtResource("2_r7bhw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1884849202]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_04qo3")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1033216345]
 zoom = Vector2(3, 3)
 limit_left = -192
 limit_right = 192
 limit_bottom = 56
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1186707795]
 texture_filter = 1
 position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_l5ubp")
 animation = &"idle"
 
-[node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+[node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1310117257]
 stream = ExtResource("5_7o88d")
 volume_db = -13.722
 
-[node name="LandAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+[node name="LandAudioPlayer" type="AudioStreamPlayer" parent="Player" unique_id=883576922]
 stream = ExtResource("5_aos2b")
 volume_db = -10.11
 
-[node name="WalkAudioPlayer" type="AudioStreamPlayer" parent="Player"]
+[node name="WalkAudioPlayer" type="AudioStreamPlayer" parent="Player" unique_id=1242876324]
 stream = ExtResource("6_aos2b")
 pitch_scale = 2.35
 parameters/looping = true
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=769244056]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Node" unique_id=1364926473]
 position = Vector2(0, 37)
 scale = Vector2(1, 0.543)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=166083970]
 position = Vector2(0, -0.41622925)
 shape = SubResource("RectangleShape2D_7b7ce")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=1445450446]
 position = Vector2(154.00002, -354.51196)
 scale = Vector2(3.7600024, 1.8416207)
 shape = SubResource("RectangleShape2D_e05c3")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=1555235541]
 position = Vector2(-1.5, -430.93927)
 shape = SubResource("RectangleShape2D_6v467")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node/StaticBody2D" unique_id=1022744607]
 position = Vector2(-179, -528.5451)
 polygon = PackedVector2Array(38, -18.41626, 38, 47.88208, 92, 47.88208, 92, 82.872894, -13, 82.872894, -13, -18.41626)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=1145085689]
 position = Vector2(-64.5, -640.884)
 shape = SubResource("RectangleShape2D_r7bhw")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=435312610]
 position = Vector2(154, -669.4291)
 shape = SubResource("RectangleShape2D_k7j6w")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=711163530]
 position = Vector2(-49.5, -838)
 shape = SubResource("RectangleShape2D_jbwhd")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node/StaticBody2D"]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=1283809673]
 position = Vector2(-166.5, -954.8803)
 shape = SubResource("RectangleShape2D_7o88d")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Node"]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node/StaticBody2D" unique_id=1147249645]
+position = Vector2(167.5, -1132.597)
+shape = SubResource("RectangleShape2D_jnprk")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node/StaticBody2D" unique_id=1354776991]
+position = Vector2(5, -1298.3425)
+polygon = PackedVector2Array(-18, 27.62439, 44, 27.62439, 44, 7.366455, 14, -51.565308, -18, -51.565308)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Node/StaticBody2D" unique_id=1579022657]
+position = Vector2(-160, -1375.6907)
+polygon = PackedVector2Array(-32, 53.406982, 49, 53.406982, 49, 18.416138, 9, -51.56543, -32, -51.56543)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node" unique_id=2010733175]
 position = Vector2(-35, -66)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/StaticBody2D2" unique_id=1548313912]
 position = Vector2(30.5, 7.5)
 shape = SubResource("RectangleShape2D_prver")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Node"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Node" unique_id=1264991184]
 position = Vector2(-59, -554)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/AnimatableBody2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_7o88d")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node/AnimatableBody2D" unique_id=1870084868]
+libraries/ = SubResource("AnimationLibrary_7o88d")
 script = ExtResource("5_jbwhd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Node/AnimatableBody2D" unique_id=1682592631]
 texture_filter = 1
 texture = ExtResource("4_6v467")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/AnimatableBody2D" unique_id=492967780]
 shape = SubResource("RectangleShape2D_aos2b")
 
-[node name="Area2D" type="Area2D" parent="Node/AnimatableBody2D"]
+[node name="Area2D" type="Area2D" parent="Node/AnimatableBody2D" unique_id=375361169]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/AnimatableBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/AnimatableBody2D/Area2D" unique_id=1438971811]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_5gt5h")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=297355146]
 stream = ExtResource("6_k7j6w")
 volume_db = -20.944
 autoplay = true
 parameters/looping = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=573788962]
+position = Vector2(0, -628)
+amount = 256
+lifetime = 10.0
+randomness = 0.4
+visibility_rect = Rect2(-192, -400, 384, 400)
+process_material = SubResource("ParticleProcessMaterial_aos2b")
 
 [connection signal="body_entered" from="Node/AnimatableBody2D/Area2D" to="Node/AnimatableBody2D" method="_player_enter"]
 [connection signal="body_entered" from="Node/AnimatableBody2D/Area2D" to="Node/AnimatableBody2D/AnimationPlayer" method="_player_enter"]
